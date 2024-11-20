@@ -4,7 +4,7 @@ void handleInterrupt();
 float frequency_calc();
 void updateFrequency(float newFrequency);
 
-const int inputPin = 18; // Pin donde conectas la salida del generador
+const int inputPin = 34; // Pin donde conectas la salida del generador
 volatile int pulsos = 0;
 unsigned long prevTime = 0;
 
@@ -16,7 +16,7 @@ int sampleIndex = 0;
 void setup() {
   Serial.begin(115200);
   pinMode(inputPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(inputPin), handleInterrupt, RISING);
+  attachInterrupt(digitalPinToInterrupt(inputPin), handleInterrupt, CHANGE);
   Serial.println("Iniciando...");
 
   // Inicializar el arreglo del filtro con ceros
@@ -56,7 +56,7 @@ float frequency_calc() {
 
   if (deltaT >= 0.5) { // Intervalo de muestreo de 0.5 segundos
     noInterrupts();
-    int pulseCount = pulsos / 850;
+    int pulseCount = pulsos / 2;
     pulsos = 0;
     interrupts();
 
