@@ -4,7 +4,7 @@ void handleInterrupt();
 float frequency_calc();
 void updateFrequency(float newFrequency);
 
-const int inputPin = 34; // Pin donde conectas la salida del generador
+const int inputPin = 19; // Pin donde conectas la salida del generador
 volatile int pulsos = 0;
 unsigned long prevTime = 0;
 
@@ -54,7 +54,7 @@ float frequency_calc() {
   unsigned long currT = millis();
   float deltaT = (currT - prevTime) / 1000.0;
 
-  if (deltaT >= 0.5) { // Intervalo de muestreo de 0.5 segundos
+  if (deltaT >= 0.35) { // Intervalo de muestreo de 0.5 segundos
     noInterrupts();
     int pulseCount = pulsos / 2;
     pulsos = 0;
