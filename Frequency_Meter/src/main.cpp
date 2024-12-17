@@ -54,7 +54,7 @@ float frequency_calc() {
   unsigned long currT = millis();
   float deltaT = (currT - prevTime) / 1000.0;
 
-  if (deltaT >= 0.35) { // Intervalo de muestreo de 0.5 segundos
+  if (deltaT >= 0.35) { // Intervalo de muestreo de 0.35 segundos
     noInterrupts();
     int pulseCount = pulsos / 2;
     pulsos = 0;
