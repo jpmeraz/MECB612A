@@ -26,6 +26,7 @@ void setup() {
 }
 
 void loop() {
+    Serial.println("Hola");
     float frequency = frequency_calc();
 
     if (frequency > 0) {
